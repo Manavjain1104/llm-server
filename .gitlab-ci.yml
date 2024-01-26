@@ -7,7 +7,7 @@ variables:
   TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
 
 publish:
-  image: docker:stable
+  image: docker:latest
   stage: publish
   services:
     - docker:dind

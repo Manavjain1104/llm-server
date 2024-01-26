@@ -12,7 +12,6 @@ publish:
   services:
     - docker:dind
   script:
-    - service start docker
     - dockerd &
     - docker build -t $TAG_COMMIT -t $TAG_LATEST .
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY

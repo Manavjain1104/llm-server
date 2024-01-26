@@ -22,7 +22,7 @@ def create_summary(text: str) -> str:
 # example: create_embedding("some job")
 
 
-def create_embedding(description):
+def create_embedding(description: str) -> List[float]:
     embedding = embedder.encode([description])
     embedding_normalised = embedding / \
         np.linalg.norm(embedding, axis=1, keepdims=True)
@@ -30,8 +30,13 @@ def create_embedding(description):
 
 
 # create a list of vector embeddings given a list of descriptions
-def bulk_create_embeddings(descriptions):
+def bulk_create_embeddings(descriptions: List[str]) -> List[List[float]]:
     embeddings = embedder.encode(descriptions)
     embeddings_normalised = embeddings / \
         np.linalg.norm(embeddings, axis=1, keepdims=True)
     return list(map(lambda e: e.tolist(), embeddings_normalised))
+
+if __name__ == "__main__":
+    print(create_summary("This is a test"))
+    print(create_embedding("This is a test"))
+    print(bulk_create_embeddings(["This is a test", "This is another test"]))

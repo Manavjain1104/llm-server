@@ -21,7 +21,7 @@ publish:
     DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""
   script:
-    - docker login -u mes21 --password-stdin "$DOCKER_PASSWORD"
+    - docker login -u mes21 --password-stdin $DOCKER_PASSWORD
     - docker build -t $TAG_COMMIT -t $TAG_LATEST .
     - docker push $TAG_COMMIT
     - docker push $TAG_LATEST

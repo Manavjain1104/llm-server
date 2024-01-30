@@ -53,7 +53,7 @@ def get_embeddings():
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_skills_required', methods=['GET'])
+@app.route('/get_skills_required', methods=['POST'])
 def get_skills_required():
     try:
         # Get parameters from the request
@@ -69,7 +69,7 @@ def get_skills_required():
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_job_details', methods=['GET'])
+@app.route('/get_job_details', methods=['POST'])
 def get_job_details():
     try:
         # Get parameters from the request
@@ -85,7 +85,7 @@ def get_job_details():
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_job_suggested', methods=['GET'])
+@app.route('/get_job_suggested', methods=['POST'])
 def get_job_suggested():
     try:
         # Get parameters from the request
@@ -101,7 +101,7 @@ def get_job_suggested():
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_candidate_skills', methods=['GET'])
+@app.route('/get_candidate_skills', methods=['POST'])
 def get_candidate_skills():
     try:
         # Get parameters from the request

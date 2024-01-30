@@ -1,4 +1,5 @@
 import summariser
+import question_answering
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -48,6 +49,22 @@ def get_embeddings():
 
         # Return the result as JSON
         return jsonify({'embeddings': embeddings})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/get_skills_required', methods=['POST'])
+def get_skills_required():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        parameters = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(parameters, "What skills are required?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
     except Exception as e:
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500

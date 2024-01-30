@@ -69,6 +69,54 @@ def get_skills_required():
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
 
+@app.route('/get_job_details', methods=['POST'])
+def get_job_details():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        parameters = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(parameters, "What are the job details?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/get_candidate_skills', methods=['POST'])
+def get_candidate_skills():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        parameters = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(parameters, "What skills do they have?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/get_suggested_job', methods=['POST'])
+def get_suggested_job():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        parameters = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(parameters, "What should they work as?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == '__main__':
     # Run the Flask application
     app.run(debug=True, host='0.0.0.0', port=5000)

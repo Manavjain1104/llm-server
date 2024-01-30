@@ -1,4 +1,5 @@
 import summariser
+import question_answering
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -51,6 +52,71 @@ def get_embeddings():
     except Exception as e:
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
+
+@app.route('/get_skills_required', methods=['GET'])
+def get_skills_required():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        context = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(context, "What skills are required?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/get_job_details', methods=['GET'])
+def get_job_details():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        context = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(context, "What are the job details?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/get_job_suggested', methods=['GET'])
+def get_job_suggested():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        context = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(context, "What should they work as?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/get_candidate_skills', methods=['GET'])
+def get_candidate_skills():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        context = data
+
+        # Call your function
+        answer = question_answering.answer_question_from_context(context, "What skills do they have?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+
 
 if __name__ == '__main__':
     # Run the Flask application

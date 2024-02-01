@@ -4,10 +4,10 @@ from sentence_transformers import SentenceTransformer
 from typing import List
 import numpy as np
 
-summariser = pipeline("summarization", model="Falconsai/text_summarization")
+summariser = pipeline("summarization", model="facebook/bart-large-cnn")
 embedder = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
 
-MAX_LEN = 1000
+MAX_LEN = 250
 MIN_LEN = 30
 
 

@@ -4,7 +4,7 @@ from sentence_transformers import SentenceTransformer
 from typing import List
 import numpy as np
 
-summariser = pipeline("summarization", model="facebook/bart-large-cnn")
+summariser = pipeline("summarization", model="Falconsai/text_summarization")
 embedder = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
 
 MAX_LEN = 250
@@ -24,7 +24,7 @@ class BulkEmbeddingException(Exception):
 def create_summary(text: str) -> type[str | SummaryException]:
     try:
         summariser_output = summariser(
-            text, max_length=MAX_LEN, min_length=MIN_LEN, do_sample=False
+            text, min_length=MIN_LEN, do_sample=False
         )
         summary = summariser_output[0]['summary_text']
         return summary

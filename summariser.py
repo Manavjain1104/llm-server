@@ -28,7 +28,7 @@ def create_summary(text: str) -> type[str | SummaryException]:
         )
         summary = summariser_output[0]['summary_text']
         return summary
-    except Exception as e:
+    except BaseException as e:
         raise SummaryException("Error whilst creating summary.\n" + str(e))
 
 # create one vector embedding given a description in form of a string
@@ -40,7 +40,7 @@ def create_embedding(description: str) -> type[List[float] | EmbeddingException]
         embedding_normalised = embedding / \
             np.linalg.norm(embedding, axis=1, keepdims=True)
         return embedding_normalised[0].tolist()
-    except Exception as e:
+    except BaseException as e:
         raise EmbeddingException("Error whilst creating embedding.\n" + str(e))
 
 
@@ -52,7 +52,7 @@ def bulk_create_embeddings(descriptions: List[str]) -> type[List[List[float]] | 
         embeddings_normalised = embeddings / \
             np.linalg.norm(embeddings, axis=1, keepdims=True)
         return list(map(lambda e: e.tolist(), embeddings_normalised))
-    except Exception as e:
+    except BaseException as e:
         raise BulkEmbeddingException("Error whilst creating bulk embeddings.\n" + str(e))
 
 if __name__ == "__main__":

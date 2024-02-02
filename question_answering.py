@@ -21,4 +21,5 @@ def answer_question_from_context(context, question):
         res = res_no_a['answer']
         return res
     except Exception as e:
+        print("Hello")
         raise CreateException("Error whilst querying Q&A model.\n" + str(e))

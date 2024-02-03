@@ -13,8 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
-RUN touch server.log
-
 # Run app.py when the container launches
-CMD ["bash", "python 3.10 endpoint.py > server.log 2>&1"]
+CMD ["python 3.10" "endpoint.py"]
 

@@ -14,5 +14,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Run app.py when the container launches
-CMD ["bash", "python3.10 endpoint.py > server.log 2>&1"]
+CMD ["python3.10" "endpoint.py"]
 

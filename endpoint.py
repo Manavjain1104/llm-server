@@ -55,69 +55,69 @@ def get_embeddings():
         # Handle errors gracefully
         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_skills_required', methods=['POST'])
-def get_skills_required():
-    try:
-        # Get parameters from the request
-        data = request.get_json()
-        parameters = data
+# @app.route('/get_skills_required', methods=['POST'])
+# def get_skills_required():
+#     try:
+#         # Get parameters from the request
+#         data = request.get_json()
+#         parameters = data
 
-        # Call your function
-        answer = question_answering.answer_question_from_context(parameters, "What skills are required?")
+#         # Call your function
+#         answer = question_answering.answer_question_from_context(parameters, "What skills are required?")
 
-        # Return the result as JSON
-        return jsonify({'answer': answer})
-    except Exception as e:
-        # Handle errors gracefully
-        return jsonify({'error': str(e)}), 500
+#         # Return the result as JSON
+#         return jsonify({'answer': answer})
+#     except Exception as e:
+#         # Handle errors gracefully
+#         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_job_details', methods=['POST'])
-def get_job_details():
-    try:
-        # Get parameters from the request
-        data = request.get_json()
-        parameters = data
+# @app.route('/get_job_details', methods=['POST'])
+# def get_job_details():
+#     try:
+#         # Get parameters from the request
+#         data = request.get_json()
+#         parameters = data
 
-        # Call your function
-        answer = question_answering.answer_question_from_context(parameters, "What are the job details?")
+#         # Call your function
+#         answer = question_answering.answer_question_from_context(parameters, "What are the job details?")
 
-        # Return the result as JSON
-        return jsonify({'answer': answer})
-    except Exception as e:
-        # Handle errors gracefully
-        return jsonify({'error': str(e)}), 500
+#         # Return the result as JSON
+#         return jsonify({'answer': answer})
+#     except Exception as e:
+#         # Handle errors gracefully
+#         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_candidate_skills', methods=['POST'])
-def get_candidate_skills():
-    try:
-        # Get parameters from the request
-        data = request.get_json()
-        parameters = data
+# @app.route('/get_candidate_skills', methods=['POST'])
+# def get_candidate_skills():
+#     try:
+#         # Get parameters from the request
+#         data = request.get_json()
+#         parameters = data
 
-        # Call your function
-        answer = question_answering.answer_question_from_context(parameters, "What skills do they have?")
+#         # Call your function
+#         answer = question_answering.answer_question_from_context(parameters, "What skills do they have?")
 
-        # Return the result as JSON
-        return jsonify({'answer': answer})
-    except Exception as e:
-        # Handle errors gracefully
-        return jsonify({'error': str(e)}), 500
+#         # Return the result as JSON
+#         return jsonify({'answer': answer})
+#     except Exception as e:
+#         # Handle errors gracefully
+#         return jsonify({'error': str(e)}), 500
 
-@app.route('/get_suggested_job', methods=['POST'])
-def get_suggested_job():
-    try:
-        # Get parameters from the request
-        data = request.get_json()
-        parameters = data
+# @app.route('/get_suggested_job', methods=['POST'])
+# def get_suggested_job():
+#     try:
+#         # Get parameters from the request
+#         data = request.get_json()
+#         parameters = data
 
-        # Call your function
-        answer = question_answering.answer_question_from_context(parameters, "What should they work as?")
+#         # Call your function
+#         answer = question_answering.answer_question_from_context(parameters, "What should they work as?")
 
-        # Return the result as JSON
-        return jsonify({'answer': answer})
-    except Exception as e:
-        # Handle errors gracefully
-        return jsonify({'error': str(e)}), 500
+#         # Return the result as JSON
+#         return jsonify({'answer': answer})
+#     except Exception as e:
+#         # Handle errors gracefully
+#         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     # Run the Flask application

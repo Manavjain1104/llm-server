@@ -17,7 +17,7 @@ def answer_question_from_context(context, question):
             'context': context
         }
         print(input)
-        res_no_a = qa_pipeline(input)
+        res_no_a = pipeline(input)
         print(res_no_a)
         res = res_no_a['answer']
         return res

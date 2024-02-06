@@ -122,7 +122,7 @@ def get_suggested_job():
 if __name__ == '__main__':
     # Run the Flask application
     print("begin answering")
-    answer_question_from_context("Test job", "What is the job?")
+    question_answering.answer_question_from_context("Test job", "What is the job?")
     print("Answered")
     try:
         app.run(debug=True, host='0.0.0.0', port=5000)

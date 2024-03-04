@@ -21,7 +21,7 @@ class BulkEmbeddingException(Exception):
     pass
 
 
-def create_summary(text: str) -> type[str | SummaryException]:
+def create_summary(text: str):
     try:
         summariser_output = summariser(
             text, min_length=MIN_LEN, do_sample=False
@@ -34,7 +34,7 @@ def create_summary(text: str) -> type[str | SummaryException]:
 # create one vector embedding given a description in form of a string
 # example: create_embedding("some job")
 
-def create_embedding(description: str) -> type[List[float] | EmbeddingException]:
+def create_embedding(description: str):
     try:
         embedding = embedder.encode([description])
         embedding_normalised = embedding / \
@@ -46,7 +46,7 @@ def create_embedding(description: str) -> type[List[float] | EmbeddingException]
 
 
 # create a list of vector embeddings given a list of descriptions
-def bulk_create_embeddings(descriptions: List[str]) -> type[List[List[float]] | BulkEmbeddingException]:
+def bulk_create_embeddings(descriptions: List[str]):
     try:
         embeddings = embedder.encode(descriptions)
         embeddings_normalised = embeddings / \

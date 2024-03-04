@@ -2,6 +2,7 @@ import traceback
 
 import summariser
 import question_answering
+import text_generation
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -112,6 +113,22 @@ def get_suggested_job():
 
         # Call your function
         answer = question_answering.answer_question_from_context(parameters, "What should they work as?")
+
+        # Return the result as JSON
+        return jsonify({'answer': answer})
+    except Exception as e:
+        # Handle errors gracefully
+        return jsonify({'error': str(e)}), 500
+    
+@app.route('/generate_text', methods=['POST'])
+def generate_text():
+    try:
+        # Get parameters from the request
+        data = request.get_json()
+        parameters = data
+
+        # Call your function
+        answer = text_generation.generate_text(parameters)
 
         # Return the result as JSON
         return jsonify({'answer': answer})

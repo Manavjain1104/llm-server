@@ -11,14 +11,14 @@ Senior Operations Officer:Senior Operations Officer \
 Customer Service Advisor:Customer Service Advisor \
 Children's Support Worker - No experience required:Children's Support Worker - No experience required School-Experienced Administrator Job - Mansfield People Administrator Support Student Experience Manager \
 Regional Training Coordinator:Regional Training Coordinator"
-    # many_data = ["This is a test", "This is another test"]
+    many_data = ["This is a test", "This is another test"]
     json_single_data = json.dumps(single_data)
-    # json_many_data = json.dumps(many_data)
+    json_many_data = json.dumps(many_data)
 
     headers = {'Content-Type': 'application/json'}
-    summary_response = requests.post(address + "/generate_text", data=json_single_data, headers=headers)
-    # embedding_response = requests.post(address + "get_embedding", data=json_single_data, headers=headers)
-    # bulk_embedding_response = requests.post(address + "get_embeddings", data=json_many_data, headers=headers)
+    summary_response = requests.post(address + "/get_summary", data=json_single_data, headers=headers)
+    embedding_response = requests.post(address + "get_embedding", data=json_single_data, headers=headers)
+    bulk_embedding_response = requests.post(address + "get_embeddings", data=json_many_data, headers=headers)
 
     if summary_response.status_code == 200:
         summary = summary_response.json()['answer']
@@ -26,15 +26,15 @@ Regional Training Coordinator:Regional Training Coordinator"
     else:
         print(f"Error: {summary_response.status_code}, {summary_response.json()}")
 
-    # if embedding_response.status_code == 200:
-    #     embedding = embedding_response.json()['embedding']
-    #     print(f"Embedding: {embedding}")
-    # else:
-    #     print(f"Error: {embedding_response.status_code}, {embedding_response.json()}")
-    #
-    # if bulk_embedding_response.status_code == 200:
-    #     bulk_embedding = bulk_embedding_response.json()['embeddings']
-    #     print(f"Bulk Embedding: {bulk_embedding}")
-    # else:
-    #     print(f"Error: {bulk_embedding_response.status_code}, {bulk_embedding_response.json()}")
+    if embedding_response.status_code == 200:
+        embedding = embedding_response.json()['embedding']
+        print(f"Embedding: {embedding}")
+    else:
+        print(f"Error: {embedding_response.status_code}, {embedding_response.json()}")
+    
+    if bulk_embedding_response.status_code == 200:
+        bulk_embedding = bulk_embedding_response.json()['embeddings']
+        print(f"Bulk Embedding: {bulk_embedding}")
+    else:
+        print(f"Error: {bulk_embedding_response.status_code}, {bulk_embedding_response.json()}")
 
